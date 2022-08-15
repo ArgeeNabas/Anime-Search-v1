@@ -27,9 +27,6 @@ slider.addEventListener('input', () => {
     update()
 })
 
-
-
-
 async function getMovies(anime) {
     animeWrapper.classList += ' anime__loading'
     animeEl.innerHTML = `<i class="fas fa-spinner anime__loading--spinner"></i>`
@@ -52,7 +49,7 @@ async function getMovies(anime) {
     if (anime === "") {
         resultsEl.innerHTML = `<h4 class="results__text">Top Rated Anime</h4>`
     }
-    else {resultsEl.innerHTML = `<h4 class="results__text">Search Results for "${anime}"</h4>`}
+    else {resultsEl.innerHTML = `<h4 class="results__text">Search Results for <span class="blue">"${anime}"</span></h4>`}
 }
 
 getMovies("") //default search
@@ -62,9 +59,10 @@ function movieHTML(anime) {
     return `<div class="anime__individual">
                 <img class ="anime__poster" src="${anime.images.jpg.large_image_url}" alt="">
                 <div class="anime__text--container">
-                    <h3>${anime.title}</h3>
-                    <h4>Score: ${anime.score}</h4>
-                    <h4>Year: ${anime.aired.from.split("-")[0]}</h4>
+                    <h2 class="anime__title">${anime.title}</h2>
+                    <p>Scored by: ${anime.scored_by.toLocaleString()}</p>
+                    <p>Score: ${anime.score}</p>
+                    <p>Year: ${anime.aired.from.split("-")[0]}</p>
                 </div>
                 <div class="anime__synopsis--container">
                 <p><b>Synopsis:</b><br> ${anime.synopsis.substring(0,400) + "..."}</p>
@@ -75,30 +73,3 @@ function movieHTML(anime) {
 searchEl.addEventListener('change', () => {
     getMovies(searchEl.value)
 })
-
-
-
-// const userListEl = document.querySelector('.user-list')
-
-// async function main() {
-//     const users = await fetch("https://jsonplaceholder.typicode.com/users");
-//     const usersData = await users.json();
-    // userListEl.innerHTML = usersData.map(user => userHTML(user)).join("")
-// }
-// main()
-
-// function showUserPosts(id) {
-//     localStorage.setItem("id",id)
-//     window.location.href = `${window.location.origin}/user.html`
-// }
-
-// function userHTML(user) {
-//     return `<div class="user-card" onclick="showUserPosts(${user.id})">
-//     <div class="user-card__container">
-//       <h3>${user.name}</h4>
-//         <p><b>Email:</b> ${user.email}</p>
-//         <p><b>Phone:</b> ${user.phone}</p>
-//         <p><b>Website:</b> <a href="${user.website}" target="_blank">${user.company.name}</a></p>
-//     </div>
-//   </div>`
-// }
