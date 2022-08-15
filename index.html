@@ -15,60 +15,67 @@
     <div class="main__section">
         <div class="above__results">
             <nav>
-                <a href="#" class="header__logo--link"><img src="./assets/movie_icon.svg" class="header__img"
-                        alt="Movie Reel Icon">
+                <a href="#" class="header__logo--link blue"><img src="./assets/Anime_eye.svg" class="header__img"
+                        alt="Anime Eye Icon">
                     Anime Search</a>
                 <ul class="nav__link--list">
                     <li class="nav__link">
                         <a href="#" class="
-                            nav__link--anchor
-                            link__hover--effect
-                            link__hover--effect--black
+                            nav__link--anchor link__hover--effect link__hover--effect--black
                             ">
                             About</a>
                     </li>
                     <li class="nav__link">
-                        <a href="#" class="
+                        <a href="mailto:argee.nabas@gmail.com:" class="
                             nav__link--anchor
                             link__hover--effect
                             link__hover--effect--black
                             ">
-                            About</a>
-                    </li>
-                    <li class="nav__link">
-                        <a href="#" class="
-                            nav__link--anchor
-                            link__hover--effect
-                            link__hover--effect--black
-                            ">
-                            About</a>
+                            Contact</a>
                     </li>
                 </ul>
             </nav>
             <section id="landing--page">
                 <div class="landing__text--container">
-                    <h1 class="landing__text--title title">
+                    <h1 class="landing__text--title title white">
                         Giant database of Anime</h1>
-                    <h3 class="landing__text-sub-title sub-title">
-                        Find most viewed series with Anime Search</h3>
+                    <h3 class="landing__text-sub-title sub-title white">
+                        Find most scored series with Anime Search. This site uses <a class="blue" href="https://jikan.moe/">Jikan API.</a></h3>
                 </div>
                 <div class="landing__search">
-                    <input class="landing__search--input" placeholder="Search Movie Titles" type="text">
+                    <input class="landing__search--input" placeholder="Search Anime Titles" type="text">
                     <button class="landing__search--btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </section>
         </div>
         <div class="results">
             <div class="results__text--container">
-                <h4 class="results__text">Search Results for</h4>
+                <h4 class="results__text white">Most Rated Anime</h4>
                 <div class="slidecontainer">
-                    <input type="range" min="0" max="10" value="5" class="slider" id="myRange">
+                    <p class="slider__title white">Minimum Score</p>
+                    <input type="range" min="0" max="10" value="1" class="slider" step="0.5" id="myRange">
+                    <!-- <span class="white" id="value"></span> -->
+                    <span class="white" id="outputVar"></span>
+                    <p class="white" id="value"></p>
                 </div>
+            </div>
+        </div>
+        <div class="anime__list">
+            <div class="no__results-text-container">
             </div>
             <div class="anime">
                 <i class="fas fa-spinner anime__loading--spinner"></i>
             </div>
         </div>
+        <footer id="footer">
+            <figure>
+                <img class="footer__img" onclick="window.location.href='index.html'" src="./assets/Anime_eye.svg"
+                    alt="">
+            </figure>
+            <div class="footer__copyright white">
+                Copyright <i class="fas fa-copyright" aria-hidden="true"></i> Argee Nabas
+            </div>
+        </footer>
     </div>
 </body>
 

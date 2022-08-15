@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
+/* 
+Black: #222831
+Gray:  #393E46
+Blue:  #00ADB5
+White: #EEEEEE
+*/
+
 * {
     font-family: 'Roboto', sans-serif;
     padding: 0;
@@ -9,6 +16,7 @@
 
 body {
     max-width: 100vw;
+    background-color: #222831;
     /* overflow-x: hidden; */
 }
 
@@ -18,6 +26,15 @@ li {
 
 a {
     text-decoration: none;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.sub-title {
+    font-size: 24px;
 }
 
 .container {
@@ -34,13 +51,20 @@ a {
 }
 
 
+.white {
+    color: #EEEEEE;
+}
+
+.blue {
+    color: #00ADB5;
+}
+
 /*
     NAV
  */
 
 .main__section {
     min-height: 100vh;
-    max-height: 100vh;
 }
 
 nav {
@@ -55,6 +79,12 @@ nav {
     justify-content: center;
     margin-left: 0 !important;
     margin: 0 24px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header__logo--link:hover {
+    filter: brightness(120%);
 }
 
 .header__img {
@@ -73,6 +103,36 @@ nav {
     margin-left: 16px;
 }
 
+.nav__link--anchor {
+    color: #EEEEEE;
+}
+
+.link__hover--effect {
+    position: relative;
+}
+
+.link__hover--effect:after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    height: 3px;
+    right: 0;
+    width: 0;
+    transition: all 300ms ease;
+}
+
+.link__hover--effect:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.link__hover--effect--black:after {
+    background-color: white;
+}
+
+.link__hover--effect--white:after {
+    background-color: white;
+}
 
 /* 
     LANDING PAGE
@@ -89,12 +149,46 @@ nav {
     flex-direction: column;
 }
 
+.landing__text--title {
+    padding-bottom: 6px;
+}
+
+.landing__text-sub-title {
+    padding-bottom: 12px;
+}
+
 .landing__search {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.landing__search--input {
+    border: 2px solid #00ADB5;
+    border-radius: 4px;
+    width: 25%;
+    padding: 6px;
+    margin-left: 36px;
+    border: none;
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+
+.landing__search--btn {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-left: 4px;
+    background: #fff;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.landing__search--btn:hover {
+    background-color: #00ADB5;
+}
 
 /* 
     LOADING 
@@ -103,7 +197,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 60px;
 }
 
 .anime__loading--spinner {
@@ -117,12 +210,18 @@ nav {
 .fa-spinner {
     font-size: 100px;
     animation: spinner 750ms infinite linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #EEEEEE;
 }
 
 @keyframes spinner {
     0% {
         transform: rotate(0);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -135,7 +234,7 @@ nav {
 
 .results {
     position: relative;
-    padding: 10px 20px 0 20px;
+    margin: 12px 50px
 }
 
 .results__text--container {
@@ -145,6 +244,10 @@ nav {
     padding-bottom: 12px;
 }
 
+.results__text {
+    font-size: 20px;
+}
+
 
 /* 
     MOVIES
@@ -152,21 +255,112 @@ nav {
 .anime {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+    height: fill-available;
 }
 
 
 .anime__individual {
-    width: calc(100%/3);
+    /* width: calc(100%/3);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
+    width: 400px;
+    height: 650px;
+    position: relative;
+    padding: 16px;
+    margin: 2rem 4rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgb(0 0 0 / 10%) !important;
+    overflow: hidden;
+    background-color: #EEEEEE
 }
 
 .anime__poster {
-    width: 300px;
-    height: 400px;
+    /* width: 300px;
+    height: 400px; */
+    width: 100%;
+    height: 70%;
+    transition: transform 300ms ease;
 }
 
 .anime__text--container {
+    padding-top: 6px;
+    text-align: center;
+}
+
+.no__results--text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+}
+
+.slider__title {
+    text-align: center;
+}
+
+#value {
+    width: 100%;
+    text-align: center;
+}
+
+/* 
+    ANIME LIST
+*/
+
+.anime__list {
+    background-color: #393E46;
+    min-height: fill-available;
+}
+
+.anime__individual:hover .anime__synopsis--container {
+    transform: translateY(0);
+}
+
+.anime__individual:hover .anime__poster {
+    transform: scale(1.05)
+}
+
+.anime__synopsis--container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 1rem;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 300ms ease;
+}
+
+/*
+ FOOTER
+*/
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px 0;
+}
+
+.footer__img--container {
+    display: flex;
+    padding: 12px 0;
+}
+
+.footer__img {
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+
+.footer__copyright {
+    padding: 12px 0;
     text-align: center;
 }

@@ -1,11 +1,34 @@
 const animeEl = document.querySelector('.anime')
 const resultsEl = document.querySelector('.results__text')
 const searchEl = document.querySelector('.landing__search--input')
-// const btnEl = document.querySelector('.landing__search--btn')
 const animeWrapper = document.querySelector('.anime')
+const noResultsWrapper = document.querySelector('.no__results-text-container')
+const slider = document.getElementById("myRange");
+let output = document.getElementById("value");
+//let outputVarNo = document.getElementById("outputVar");         
 // let animeDataArray;
 
 // http://www.omdbapi.com/?apikey=2ce356c6&s=
+
+
+function update() {
+    return output.innerHTML = slider.value;
+}
+
+// slider.addEventListener('input',);
+// getMovies(searchEl.value)
+// update();
+
+slider.addEventListener('change', () => {
+    getMovies(searchEl.value)
+})
+
+slider.addEventListener('input', () => {
+    update()
+})
+
+
+
 
 async function getMovies(anime) {
     animeWrapper.classList += ' anime__loading'
@@ -17,21 +40,34 @@ async function getMovies(anime) {
     //     animeDataArray = await animeData.data
     // }
     animeWrapper.classList.remove('anime__loading')
-    // console.log(animeDataArray)
-    const filteredAnimeDataArray = animeDataArray.filter(anime => anime.aired.from).sort(function (a, b) { return b.scored_by - a.scored_by }).slice(0, 6)
+    const filteredAnimeDataArray = animeDataArray.filter(anime => anime.aired.from && anime.score >= slider.value).sort(function (a, b) { return b.scored_by - a.scored_by }).slice(0,24)
     console.log(filteredAnimeDataArray)
     animeEl.innerHTML = filteredAnimeDataArray.map(anime => movieHTML(anime)).join("")
-    resultsEl.innerHTML = `<h4 class="results__text">Search Results for "${anime}"</h4>`
+    if (filteredAnimeDataArray.length === 0) {
+        noResultsWrapper.innerHTML = `<h4 class="no__results--text">No Results. Please Try Again</h4>`
+    }
+    else {
+        noResultsWrapper.innerHTML = ""
+    }
+    if (anime === "") {
+        resultsEl.innerHTML = `<h4 class="results__text">Top Rated Anime</h4>`
+    }
+    else {resultsEl.innerHTML = `<h4 class="results__text">Search Results for "${anime}"</h4>`}
 }
 
-getMovies("Naruto") //default search
+getMovies("") //default search
+update()
 
 function movieHTML(anime) {
     return `<div class="anime__individual">
                 <img class ="anime__poster" src="${anime.images.jpg.large_image_url}" alt="">
                 <div class="anime__text--container">
-                    <h2>${anime.title}</h2>
+                    <h3>${anime.title}</h3>
+                    <h4>Score: ${anime.score}</h4>
                     <h4>Year: ${anime.aired.from.split("-")[0]}</h4>
+                </div>
+                <div class="anime__synopsis--container">
+                <p><b>Synopsis:</b><br> ${anime.synopsis.substring(0,400) + "..."}</p>
                 </div>
             </div>`
 }
