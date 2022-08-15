@@ -41,7 +41,7 @@ async function getMovies(anime) {
     console.log(filteredAnimeDataArray)
     animeEl.innerHTML = filteredAnimeDataArray.map(anime => movieHTML(anime)).join("")
     if (filteredAnimeDataArray.length === 0) {
-        noResultsWrapper.innerHTML = `<h4 class="no__results--text">No Results. Please Try Again</h4>`
+        noResultsWrapper.innerHTML = `<h4 class="no__results--text white">No Results. Please Try Again</h4>`
     }
     else {
         noResultsWrapper.innerHTML = ""
