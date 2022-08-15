@@ -47,7 +47,7 @@ async function getMovies(anime) {
         noResultsWrapper.innerHTML = ""
     }
     if (anime === "") {
-        resultsEl.innerHTML = `<h4 class="results__text">Top Rated Anime</h4>`
+        resultsEl.innerHTML = `<h4 class="results__text">Most Rated Anime</h4>`
     }
     else {resultsEl.innerHTML = `<h4 class="results__text">Search Results for <span class="blue">"${anime}"</span></h4>`}
 }
