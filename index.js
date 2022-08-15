@@ -57,7 +57,9 @@ update()
 
 function movieHTML(anime) {
     return `<div class="anime__individual">
-                <img class ="anime__poster" src="${anime.images.jpg.large_image_url}" alt="">
+                <a href="${anime.url}" target="_blank">
+                    <img class ="anime__poster" src="${anime.images.jpg.large_image_url}" alt="">
+                </a>
                 <div class="anime__text--container">
                     <h2 class="anime__title">${anime.title}</h2>
                     <p>Scored by: ${anime.scored_by.toLocaleString()}</p>
